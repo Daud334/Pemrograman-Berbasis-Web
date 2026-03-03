@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Praktikum 2</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td><label for="nama">Nama :</label></td>
+                <td><input type="text" name="nama" id="nama" placeholder="Masukan Nama Pengguna"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email :</label></td>
+                <td><input type="email" name="email" id="email" placeholder="Masukan Email Pengguna"></td>
+            </tr>
+            <tr>
+                <td><label for="npm">NPM :</label></td>
+                <td><input type="teks" name="NPM" id="npm" placeholder="Masukan NPM"></td>
+            </tr>
+             <tr>
+                <td><label for="jurusan">Program Studi :</label></td>
+                <td><input type="teks" name="jurusan" id="jurusan" placeholder="Nama Jurusan"></td>
+            </tr>
+            <tr>
+                <td><label for="Fakultas">Fakultas :</label></td>
+                <td>
+                    <select name="Fakultas" id="Fakultas">
+                        <option value="fasilkom">Fakultas Ilmu Komputer</option>
+                        <option value="ft">Fakultas Teknik</option>
+                        <option value="fisip">Fakultas Ilmu Sosial dan Ilmu Politik</option>
+                        <option value="fkip"> Fakultas Keguruan dan Ilmu Pendidikan</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin :</td>
+                <td><input type="radio" name="jenis-kelamin" id="laki" value="Laki-laki"><label for="laki">Laki-laki</label></td>
+                <td><input type="radio" name="jenis-kelamin" id="perempuan" value="Perempuan"><label for="perempuan">Perempuan</label></td>
+            </tr>
+            <tr>
+                <td>Hobi :</td>
+                <td><input type="checkbox" name="hobi" id="musik" value="Musik"><label for="musik">Musik</label></td>
+                <td><input type="checkbox" name="hobi" id="olahraga" value="Olahraga"><label for="olahraga">Olahraga</label></td>
+            </tr>
+            <tr>
+                <td><label for="kota">Pilih Kota :</label></td>
+                <td>
+                    <select id="kota" name="kota">
+                        <option value="jkt">Jakarta</option>
+                        <option value="bks">Bekasi</option>
+                        <option value="bgr">Bogor</option>
+                        <option value="bdg">Bandung</option>
+                        <option value="sby">Surabaya</option>
+                        <option value="smg">Semarang</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="file">Upload Foto :</label></td>
+                <td><input type="file" name="file" id="file" accept=".png,.jpg,.jpeg"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Daftar</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
