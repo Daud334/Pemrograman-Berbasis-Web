@@ -1,0 +1,11 @@
+body{
+    margin: 20px;
+    background-color: lightcyan;
+}
+.empatA{
+    color: blue;
+}
+
+#username{
+    border: 2px solid blue;
+}
