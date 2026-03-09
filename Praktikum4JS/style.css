@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #9c1328;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #db343f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+}
+
+input, select, textarea{
+    width: 100%;
+    padding: 4px;
+    margin-bottom: 10px;   
+}
+
+.content{
+    flex: 2;
+    padding:20px;
+    background-color: #BDC3C7;
+    border-radius: 10px;
+    margin-left: 20px;
+    position: relative;
+}
+
+#hasil{
+    font-size: 40px;
+}
