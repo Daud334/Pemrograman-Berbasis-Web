@@ -33,7 +33,6 @@ if (isset($_POST['submit'])) {
         $total = $biayaUKT;
         $diskon = "0%";
     }
-
     
     echo "<b>Biodata dan UKT</b><br>";
     echo "NPM : $npm <br>";

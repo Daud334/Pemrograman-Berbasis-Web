@@ -11,7 +11,6 @@
 <br>
 <hr>
 
-
 <?php
 if (isset($_POST['submit'])) {
     $var_nama = $_POST['nama'];
