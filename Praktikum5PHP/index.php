@@ -6,6 +6,7 @@ $totalharga = $jumlahbeli * $hargasatuan[2];
 define("PAJAK", 0.1);
 $pajak = $totalharga * PAJAK ;
 
+
 echo "<h2><b>Perhitungan Total Pembelian Barang (Dengan Array)</b> </h2>";
 echo "<hr>";
 echo "Nama Barang : " . $namabarang[2] . "<br>";
