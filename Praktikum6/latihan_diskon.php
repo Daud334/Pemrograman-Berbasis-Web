@@ -4,21 +4,21 @@
 </head>
     <body>
 <form method="post" action="">
-    NPM: <input type="number" name="npm" require>
-    Nama: <input type="text" name="nama" require><br>
-    Prodi: <input type="text" name="prodi" require>
-    Semester : <input type="number" name="semester"><br>
-    Biaya UKT : <input type="number" name="ukt"><br>
-    <input type="submit" name="submit" value="Proses"><br>
+    NPM: <input type="text" name="npm" required><br>
+    Nama: <input type="text" name="nama" required><br>
+    Prodi: <input type="text" name="prodi" required><br>
+    Semester : <input type="number" name="semester" required><br>
+    Biaya UKT : <input type="number" name="ukt" required><br>
+    <input type="submit" name="submit" value="Proses" required><br>
     <hr>
 </form>
 <?php
 if (isset($_POST['submit'])) {
-    $npm = $_POST['npm'];
-    $nama = $_POST['nama'];
-    $prodi = $_POST['prodi'];
+     $npm = htmlspecialchars($_POST['npm']);
+    $nama = htmlspecialchars($_POST['nama']);
+    $prodi = htmlspecialchars($_POST['prodi']);
     $semester = $_POST['semester'];
-    $biayaUKT = $_POST['biayaUKT'];
+    $biayaUKT = $_POST['ukt'];
 
     if ($biayaUKT >= 5000000) {
         $total = $biayaUKT - ($biayaUKT * 0.10);
@@ -34,6 +34,7 @@ if (isset($_POST['submit'])) {
         $diskon = "0%";
     }
 
+    
     echo "<b>Biodata dan UKT</b><br>";
     echo "NPM : $npm <br>";
     echo "Nama : $nama <br>";
@@ -41,7 +42,7 @@ if (isset($_POST['submit'])) {
     echo "Semester : $semester <br>";
     echo "Biaya UKT : $biayaUKT <br>";
     echo "Diskon : $diskon <br>";
-    echo "Total Harga : $total <br>";
+    echo "Yang harus dibayar : $total <br>";
 }
 ?>
 <br>
