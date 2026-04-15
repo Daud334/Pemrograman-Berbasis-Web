@@ -14,7 +14,7 @@
 </form>
 <?php
 if (isset($_POST['submit'])) {
-     $npm = htmlspecialchars($_POST['npm']);
+    $npm = htmlspecialchars($_POST['npm']);
     $nama = htmlspecialchars($_POST['nama']);
     $prodi = htmlspecialchars($_POST['prodi']);
     $semester = $_POST['semester'];
