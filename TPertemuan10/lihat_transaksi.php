@@ -1,67 +1,57 @@
 <?php
-include 'koneksi.php';
-include 'nav.php';
+include 'koneksi_db.php';
 
-$sql = "select p.*, pel.nama as nama_pelanggan 
-        from pesanan p 
-        join pelanggan pel on p.pelanggan_id = pel.id 
-        order by p.id desc";
-$result = $conn->query($sql);
+$query = "
+SELECT pesanan.id AS pesanan_id, pelanggan.nama AS nama_pelanggan, pesanan.tanggal_pesanan, pesanan.total_harga
+FROM pesanan
+JOIN pelanggan ON pesanan.pelanggan_id = pelanggan.id
+";
 
-$message = "";
-if (isset($_GET['msg']) && $_GET['msg'] == 'success') {
-    $message = '<div class="alert alert-success">pesanan berhasil dibuat!</div>';
-}
+$result = $conn->query($query);
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lihat pesanan</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Daftar Pesanan</title>
 </head>
+
 <body>
+
+<?php include 'nav.php' ?>
+
 <div class="container mt-4">
-    <div class="card shadow">
-        <div class="card-header bg-info text-white">
-            <h3>daftar pesanan</h3>
-        </div>
-        <div class="card-body">
-            <?php echo $message; ?>
-            
-            <table class="table table-bordered table-striped">
-                <thead class="table-info">
-                    <tr>
-                        <th>id pesanan</th>
-                        <th>tanggal</th>
-                        <th>pelanggan</th>
-                        <th>total harga</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if ($result->num_rows > 0): ?>
-                        <?php while($row = $result->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['tanggal_pesanan']; ?></td>
-                            <td><?php echo htmlspecialchars($row['nama_pelanggan']); ?></td>
-                            <td><?php echo number_format($row['total_harga'], 0, ',', '.'); ?></td>
-                        </tr>
-                        <?php endwhile; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="4" class="text-center">belum ada pesanan</td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-            
-            <a href="index.php" class="btn btn-secondary">kembali</a>
-        </div>
-    </div>
+    <h2>Daftar Pesanan</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID Pesanan</th>
+                <th>Nama Pelanggan</th>
+                <th>Tanggal Pesanan</th>
+                <th>Total Harga</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?= $row['pesanan_id'] ?></td>
+                <td><?= htmlspecialchars($row['nama_pelanggan']) ?></td>
+                <td><?= $row['tanggal_pesanan'] ?></td>
+                <td>Rp<?= number_format($row['total_harga'], 2) ?></td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

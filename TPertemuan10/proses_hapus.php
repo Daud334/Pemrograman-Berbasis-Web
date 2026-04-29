@@ -1,21 +1,20 @@
 <?php
-include 'koneksi.php';
+include 'koneksi_db.php';
 
-if (isset($_GET['id'])) {
-    $id = (int)$_GET['id'];
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
     
-    $stmt = $conn->prepare("delete from buah where id = ?");
+    $stmt = $conn->prepare("DELETE FROM buah WHERE id = ?");
     $stmt->bind_param("i", $id);
-    
+
     if ($stmt->execute()) {
-        header("location: index.php?msg=deleted");
+        echo "<script>alert('Data berhasil dihapus'); window.location='index.php';</script>";
     } else {
-        header("location: index.php?msg=error");
+        echo "<script>alert('Gagal menghapus data: " . addslashes($stmt->error) . "'); window.location='index.php';</script>";
     }
-    
     $stmt->close();
-    $conn->close();
 } else {
-    header("location: index.php");
+    echo "<script>alert('ID tidak valid'); window.location='index.php';</script>";
 }
+$conn->close();
 ?>

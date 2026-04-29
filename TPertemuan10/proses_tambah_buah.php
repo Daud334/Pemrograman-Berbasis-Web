@@ -1,24 +1,27 @@
 <?php
-include 'koneksi.php';
+include 'koneksi_db.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama_buah = $_POST['nama_buah'];
     $jenis_buah = $_POST['jenis_buah'];
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
-    
-    $stmt = $conn->prepare("insert into buah (nama_buah, jenis_buah, harga, stok) values (?, ?, ?, ?)");
+
+    $stmt = $conn->prepare("INSERT INTO buah (nama_buah, jenis_buah, harga, stok) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssii", $nama_buah, $jenis_buah, $harga, $stok);
-    
+
     if ($stmt->execute()) {
-        header("location: index.php?msg=added");
+        echo "<script>
+        alert('Buah berhasil ditambahkan!');
+        window.location.href = 'tambah_buah.php';
+        </script>";
     } else {
-        header("location: index.php?msg=error");
+        echo "<script>
+        alert('Gagal menambahkan buah: " . addslashes($stmt->error) . "');
+        window.location.href = 'tambah_buah.php';
+        </script>";
     }
-    
     $stmt->close();
-    $conn->close();
-} else {
-    header("location: tambah_buah.php");
 }
+$conn->close();
 ?>
